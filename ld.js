@@ -17,7 +17,11 @@
     document.head.appendChild(s);
   };
 
+  // Module, die sich auch ohne data-ld über ihr eigenes Attribut aktivieren
+  var AUTO = { '[data-reveal],[data-reveal-stagger]': 'reveal' };
+
   function scan() {
+    for (var sel in AUTO) if (document.querySelector(sel)) LD.load(AUTO[sel]);
     var els = document.querySelectorAll('[data-ld]');
     for (var i = 0; i < els.length; i++) {
       els[i].getAttribute('data-ld').split(/[\s,]+/).forEach(LD.load);

@@ -12,9 +12,20 @@ Der Lader sucht nach `data-ld="…"` und lädt `modules/<name>.js`.
 
 ## Module
 
-| Modul | Aktivierung | Anleitung |
+| Modul | Aktivierung | Zweck |
 |---|---|---|
-| faq | `data-ld="faq"` | Musterseite → /module#faq |
+| faq | `data-ld="faq"` | Akkordeon mit Animation |
+| produktwahl | `data-ld="produktwahl"` | Produkt-Karten ↔ Vorschau ↔ Formular, Prüfung, Übergabe an Dankesseite |
+| produktwahl-danke | `data-ld="produktwahl-danke"` | Auswahl und Formulardaten auf der Dankesseite anzeigen |
+| multistep | `data-ld="multistep"` am Formular | Formly-Schritte + Hilfstexte bei Fehleingaben |
+| formcheck | `data-ld="formcheck"` am Formular | nur Hilfstexte, ohne Schritte |
+| galerie | `data-ld="galerie"` | Filter + Lightbox |
+| video-karte | `data-ld="video-karte"` | Vimeo/YouTube startet per Klick in der Karte |
+| reveal | `data-reveal` (lädt sich selbst) | Einblenden beim Scrollen |
+| header | `data-ld="header"` | Scroll-Zustand, Mobilmenü, aktiver Menüpunkt |
+| prozess | `data-ld="prozess"` | Fortschrittslinie beim Scrollen |
+
+Ausführliche Anleitung mit Beispielen: Musterseite → /module
 
 ## Versionen
 
