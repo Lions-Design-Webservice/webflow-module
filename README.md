@@ -5,7 +5,7 @@ Wiederverwendbare Funktionen für Webflow-Seiten. Jede Seite lädt nur die Modul
 ## Einbindung (einmal pro Website, Footer-Code)
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/Lions-Design-Webservice/webflow-module@1/ld.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/Lions-Design-Webservice/webflow-module@stable/ld.js" defer></script>
 ```
 
 Der Lader sucht nach `data-ld="…"` und lädt `modules/<name>.js`.
@@ -18,10 +18,11 @@ Der Lader sucht nach `data-ld="…"` und lädt `modules/<name>.js`.
 
 ## Versionen
 
-- Kundenseiten binden `@1` ein → bekommen alle kompatiblen 1.x-Updates.
-- Änderungen, die bestehende Seiten brechen würden → neue Hauptversion (`v2.0.0`).
-- Nach jedem Release: Git-Tag setzen (`v1.0.1` …) und jsDelivr-Cache leeren:
-  `https://purge.jsdelivr.net/gh/Lions-Design-Webservice/webflow-module@1/<datei>`
+- `main` = Arbeitsstand. Hier wird entwickelt und getestet (`…/webflow-module@main/ld.js` auf der Musterseite).
+- `stable` = das, was Kundenseiten laden. Erst nach dem Test wird `main` nach `stable` übernommen.
+- jsDelivr hält Branch-Dateien bis zu 12 Stunden im Zwischenspeicher. Nach einem Update sofort leeren:
+  `https://purge.jsdelivr.net/gh/Lions-Design-Webservice/webflow-module@stable/<datei>`
+- Änderungen, die bestehende Seiten brechen würden, bekommen einen neuen Modulnamen (z. B. `faq2`) statt das alte Modul zu ändern.
 
 ## Regeln für neue Module
 
