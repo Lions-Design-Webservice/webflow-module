@@ -54,9 +54,17 @@
       el.addEventListener('input', function () { if (el.classList.contains('is-invalid')) check(el); });
       el.addEventListener('change', function () { if (el.tagName === 'SELECT' || el.type === 'checkbox') check(el); });
     });
-    // Weiter-Klick: Fehler im aktuellen Schritt sichtbar machen (Formly blockiert selbst, zeigt aber keinen Text)
+    // Weiter-Klick: Fehler im aktuellen Schritt sichtbar machen. Formly deaktiviert den Button
+    // (pointer-events:none), der Klick landet dann auf dem Element dahinter – deshalb über die Position prüfen.
     form.addEventListener('click', function (e) {
       var nb = e.target.closest('[data-form="next-btn"]');
+      if (!nb) {
+        form.querySelectorAll('[data-form="next-btn"]').forEach(function (b) {
+          if (!b.offsetParent) return;
+          var r = b.getBoundingClientRect();
+          if (e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) nb = b;
+        });
+      }
       if (!nb) return;
       var step = nb.closest('[data-form="step"]');
       if (step) step.querySelectorAll(sel).forEach(check);
