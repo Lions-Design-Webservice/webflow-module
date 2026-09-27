@@ -45,7 +45,9 @@
     var vh = window.innerHeight || 800;
     var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
       es.forEach(function (e) {
-        if (!e.isIntersecting) return;
+        // Über das Element hinweggesprungen (Anker-Link): sofort zeigen, damit nichts unsichtbar bleibt
+        if (!e.isIntersecting && e.boundingClientRect.bottom < 0) e.target.style.transitionDelay = '0ms';
+        else if (!e.isIntersecting) return;
         io.unobserve(e.target);
         var el = e.target;
         requestAnimationFrame(function () { el.classList.add('ld-rv-in'); });

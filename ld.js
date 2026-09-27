@@ -12,7 +12,8 @@
     if (!/^[a-z0-9-]+$/.test(name) || LD.loaded[name]) return;
     LD.loaded[name] = true;
     var s = document.createElement('script');
-    s.src = base + name + '.js';
+    // Tages-Stempel: Browser holen Modul-Updates spätestens am nächsten Tag (sonst bis zu 7 Tage Cache)
+    s.src = base + name + '.js?d=' + new Date().toISOString().slice(0, 10).replace(/-/g, '');
     s.async = false;
     document.head.appendChild(s);
   };
